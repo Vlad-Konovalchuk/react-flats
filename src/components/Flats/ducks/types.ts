@@ -5,13 +5,15 @@ export enum FlatsActionTypes {
   SELECTED = "@@flats/SELECTED",
 }
 
-export interface IFlat {
-  title: string;
-  description: string;
+export interface FlatModel {
+  _id:number|string;
+  title:string;
+  price?:number;
+  description:string;
 }
 
 export interface IFlatsState {
   readonly loading: boolean;
-  readonly data: IFlat[];
+  readonly data: FlatModel[];
   readonly errors?: string;
 }
