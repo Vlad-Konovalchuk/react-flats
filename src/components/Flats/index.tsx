@@ -3,12 +3,13 @@ import {connect} from 'react-redux'
 import {IRootState} from '../../store/rootReducer'
 import {Dispatch} from 'redux'
 import {fetchRequest} from './ducks/actions'
-import {IFlat} from './ducks/types'
-import {Styled} from './Flats.style'
+import {FlatModel} from './ducks/types'
+import FlatsList from "./components/FlatsList";
+import {flatsData} from "./mock";
 
 interface IProps {
-    flats: Array<IFlat>,
-    getFlats: () => any
+    flats: FlatModel[];
+    getFlats: () => any;
 }
 
 const Flats: React.FC<IProps> = ({getFlats, flats}) => {
@@ -19,19 +20,10 @@ const Flats: React.FC<IProps> = ({getFlats, flats}) => {
     }, [] )
 
     return (
-        <Styled.FlatBlock>
-            Flats component
-            <Styled.FlatsList>
-                {
-                    flats.length > 0 && flats.map(i => (
-                        <Styled.FlatsListItem key={i.title}>
-                            <p>{i.title}</p>
-                            <p>{i.description}</p>
-                        </Styled.FlatsListItem>
-                    ))
-                }
-            </Styled.FlatsList>
-        </Styled.FlatBlock>
+        <div className="container-fluid">
+            <div className="flats-page__filter">Filters</div>
+            <FlatsList flats={flats}/>
+        </div>
     )
 }
 
