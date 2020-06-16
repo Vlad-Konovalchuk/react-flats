@@ -4,7 +4,7 @@ import { ConnectedRouter } from 'connected-react-router'
 import routes from './routes'
 import { Provider } from 'react-redux'
 import configureStore from './store'
-
+import './App.css'
 
 export const history = createBrowserHistory()
 
@@ -14,7 +14,9 @@ const App = () => {
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        {routes}
+        <div className="container-fluid wrapper p-0">
+            {routes}
+        </div>
       </ConnectedRouter>
     </Provider>
 

@@ -5,7 +5,7 @@ import RouterLink from "../Link";
 
 const Header = () => {
     return (
-        <Styled.Header>
+        <Styled.Header className="main-header">
             <Styled.HeaderTitle>
                 Ts Your App
             </Styled.HeaderTitle>

@@ -9,7 +9,7 @@ import SignUp from "../components/SignUp";
 const routes = (
     <Router>
         <Header/>
-        <main>
+        <main className="main-content">
             <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/signin" component={SignIn}/>
