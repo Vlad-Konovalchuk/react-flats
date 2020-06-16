@@ -1,7 +1,8 @@
-import { Api } from "../utils/api";
-import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
-import { apiConfig, apiUrls } from "../constants/api";
-import { IFlat } from "../components/Flats/ducks/types";
+import {Api} from "../utils/api";
+import {AxiosError, AxiosRequestConfig, AxiosResponse} from "axios";
+import {apiConfig, apiUrls} from "../constants/api";
+import {FlatModel} from "../components/Flats/ducks/types";
+import {flatsData} from "../components/Flats/mock";
 
 class Service extends Api {
   public constructor(config: AxiosRequestConfig) {
@@ -11,31 +12,19 @@ class Service extends Api {
     this.getAll = this.getAll.bind(this);
   }
   public getAll() {
-    const mock: [IFlat] = [
-      {
-        title: "Title",
-        description: "DEcsription",
-      },
-    ];
-    return mock;
-    return this.post<[IFlat]>(apiUrls.flats.getAll)
-      .then((response: AxiosResponse<[IFlat]>) => {
+    return flatsData;
+    return this.post<[FlatModel]>(apiUrls.flats.getAll)
+      .then((response: AxiosResponse<FlatModel[]>) => {
         const { data } = response;
-        const mock: [IFlat] = [
-          {
-            title: "Title",
-            description: "DEcsription",
-          },
-        ];
-        return mock;
+          return flatsData;
       })
       .catch((error: AxiosError) => {
         throw error;
       });
   }
   public getOne() {
-    return this.post<IFlat>("API_LOGIN")
-      .then((response: AxiosResponse<IFlat>) => {
+    return this.post<FlatModel>("API_LOGIN")
+      .then((response: AxiosResponse<FlatModel>) => {
         const { data } = response;
 
         return data;
@@ -51,12 +40,13 @@ class Service extends Api {
    * @param {string} credentials.password - user's password.
    * @returns {Promise<UserState>} userState - user information,
    */
-  public createFlat(flat: IFlat): Promise<IFlat> {
-    return this.post<IFlat>("API_LOGIN", JSON.stringify(flat))
-      .then((response: AxiosResponse<IFlat>) => {
+  public createFlat(flat: FlatModel): Promise<FlatModel> {
+    return this.post<FlatModel>("API_LOGIN", JSON.stringify(flat))
+      .then((response: AxiosResponse<FlatModel>) => {
         const { data } = response;
 
-        const state: IFlat = {
+        const state: FlatModel = {
+            _id:'2321321321321321',
           title: data.title,
           description: data.description,
         };
