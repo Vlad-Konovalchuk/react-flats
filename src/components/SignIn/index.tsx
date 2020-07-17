@@ -12,27 +12,9 @@ interface ISignInFormData {
     login: string;
 }
 
-/*const WithAuthService = props => WrappedComponent => {
-    class WithAuthService extends React.Component<any, any> {
-        login = async (email, password) => {
-            await AuthService.login({email, password})
-        }
-
-        render() {
-            return (
-                <WrappedComponent
-                    login={this.login}
-                    {...props}
-                />
-            );
-        }
-    }
-
-    return WithAuthService;
-};*/
 const SignIn: React.FC<{}> = () => {
     const initialValues: ISignInFormData = {
-        email: '',
+        email: 2,
         password: '',
         login: ''
     }
