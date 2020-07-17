@@ -15,7 +15,7 @@ interface ISignInFormData {
 const SignIn: React.FC<{}> = () => {
     const initialValues: ISignInFormData = {
         email: 2,
-        password: '',
+        password: 2,
         login: ''
     }
     return (
